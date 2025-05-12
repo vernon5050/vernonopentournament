@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vernon  Open 2025 - Marshall's Fields Tennis Courts</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: #1a3e72;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .tournament-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 30%;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #eee;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .tab.active {
+            background: #1a3e72;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #1a3e72;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .match-result {
+            font-weight: bold;
+        }
+        
+        .winner {
+            color: #2a7f2a;
+        }
+        
+        .upcoming-match {
+            color: #1a3e72;
+        }
+        
+        .date-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        
+        .date-btn {
+            padding: 8px 15px;
+            background: #1a3e72;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .current-date {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #eee;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .tournament-info {
+                flex-direction: column;
+            }
+            
+            .info-card {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vernon Junior Tennis Open Tournament 2025</h1>
+        <div class="subtitle">Marshall's Tennis Courts Field, Vernon, BC</div>
+        <div>May 25-31, 2025 • Marshall's Fields, Vernon, BC</div>
+    </header>
+    
+    <div class="tournament-info">
+        <div class="info-card">
+            <h3>Tournament Details</h3>
+            <p><strong>Surface:</strong> Clay</p>
+            <p><strong>Category:</strong> ATP Masters 1000 / WTA 1000</p>
+            <p><strong>Prize Money:</strong> Medalls </p>
+        </div>
+        
+        <div class="info-card">
+            <h3>Defending Champions</h3>
+            <p><strong>Men's Singles:</strong> Chad Craig</p>
+            <p><strong>Women's Singles:</strong> Debbie Nurse</p>
+            <p><strong>Men's Doubles:</strong> Ron P. & Richard T. vs Rob A. & Brian B. </p>
+        </div>
+        
+        <div class="info-card">
+            <h3>Venue Information</h3>
+            <p><strong>Location:</strong> Marshall's Fields, Vernon, BC.</p>
+            <p><strong>Capacity:</strong> Fourt courts</p>
+            <p><strong>Opened:</strong> 2007</p>
+        </div>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab active" onclick="openTab('schedule')">Schedule</div>
+        <div class="tab" onclick="openTab('results')">Results</div>
+        <div class="tab" onclick="openTab('draws')">Draws</div>
+    </div>
+    
+    <div id="schedule" class="tab-content active">
+        <h2>Daily Schedule</h2>
+        
+        <div class="date-navigation">
+            <button class="date-btn" onclick="changeDate(-1)">Previous Day</button>
+            <div class="current-date" id="current-date">May 25, 2025 (Day 1)</div>
+            <button class="date-btn" onclick="changeDate(1)">Next Day</button>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Court</th>
+                    <th>Match</th>
+                    <th>Round</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11:00</td>
+                    <td>Court 1</td>
+                    <td class="upcoming-match">Mike W. (CAN) [2] vs. Brian B. (CAN)</td>
+                    <td>First Round</td>
+                </tr>
+                <tr>
+                    <td>13:00</td>
+                    <td>Court 2</td>
+                    <td class="upcoming-match">Ron A. (CAN) [3] vs. Gordon M. (CAN)</td>
+                    <td>First Round</td>
+                </tr>
+                <tr>
+                    <td>15:30</td>
+                    <td>Court 3</td>
+                    <td class="upcoming-match">Paul W. (CAN) [1] vs. Dennis B (CAN)</td>
+                    <td>First Round</td>
+                </tr>
+                <tr>
+                    <td>18:00</td>
+                    <td>Court 4</td>
+                    <td class="upcoming-match">Darrel B. (CAN) [2] vs. Konrad G. (CAN)</td>
+                    <td>First  Round</td>
+                </tr>
+                <tr>
+                    <td>20:30</td>
+                    <td>Court 1</td>
+                    <td class="upcoming-match">Ivan P. (CAN) vs. Rob V. (CAN) [8]</td>
+                    <td>Second Round</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="results" class="tab-content">
+        <h2>Match Results</h2>
+        
+        <div class="date-navigation">
+            <button class="date-btn" onclick="changeResultsDate(-1)">Previous Day</button>
+            <div class="current-date" id="results-date">May 26, 2025 (Day 2)</div>
+            <button class="date-btn" onclick="changeResultsDate(1)">Next Day</button>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Court</th>
+                    <th>Match</th>
+                    <th>Round</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11:00</td>
+                    <td>Court 1</td>
+                    <td>Richar T. (CAN) [4] vs. Ian T. (CAN)</td>
+                    <td>First Round</td>
+                    <td class="match-result winner">Ian T. 6-4, 6-4</td>
+                </tr>
+                <tr>
+                    <td>13:15</td>
+                    <td>Court 2</td>
+                    <td>Lance C. (CAN) [1] vs. Stan O. (CAN)</td>
+                    <td>Second Round</td>
+                    <td class="match-result winner">Lance C. 6-2, 6-1</td>
+                </tr>
+                <tr>
+                    <td>15:30</td>
+                    <td>Grand Stand</td>
+                    <td>Stefanos Tsitsipas (GRE) [5] vs. Lorenzo Musetti (ITA)</td>
+                    <td>First Round</td>
+                    <td class="match-result winner">Tsitsipas 7-6(5), 6-3</td>
+                </tr>
+                <tr>
+                    <td>17:45</td>
+                    <td>Pietrangeli</td>
+                    <td>Ons Jabeur (TUN) [6] vs. Bianca Andreescu (CAN)</td>
+                    <td>Second Round</td>
+                    <td class="match-result winner">Jabeur 3-6, 6-4, 6-2</td>
+                </tr>
+                <tr>
+                    <td>20:00</td>
+                    <td>Centrale</td>
+                    <td>Novak Djokovic (SRB) [3] vs. Andy Murray (GBR)</td>
+                    <td>First Round</td>
+                    <td class="match-result winner">Djokovic 6-3, 6-1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="draws" class="tab-content">
+        <h2>Tournament Draws</h2>
+        
+        <div class="draw-navigation">
+            <button class="draw-btn" onclick="showDraw('mens-singles')">Men's Singles</button>
+            <button class="draw-btn" onclick="showDraw('womens-singles')">Women's Singles</button>
+            <button class="draw-btn" onclick="showDraw('mens-doubles')">Men's Doubles</button>
+        </div>
+        
+        <div id="mens-singles" class="draw-content">
+            <h3>Men's Singles Draw</h3>
+            <p>Top Half:</p>
+            <ul>
+                <li>[1] Jannik Sinner (ITA) vs. Daniel Evans (GBR)</li>
+                <li>Matteo Berrettini (ITA) vs. [8] Holger Rune (DEN)</li>
+                <li>[3] Novak Djokovic (SRB) vs. Alejandro Davidovich Fokina (ESP)</li>
+                <li>[5] Stefanos Tsitsipas (GRE) vs. [WC] Flavio Cobolli (ITA)</li>
+            </ul>
+            <p>Bottom Half:</p>
+            <ul>
+                <li>[4] Daniil Medvedev (RUS) vs. Sebastian Korda (USA)</li>
+                <li>[7] Casper Ruud (NOR) vs. Alexander Zverev (GER)</li>
+                <li>[2] Carlos Alcaraz (ESP) vs. Stan Wawrinka (SUI)</li>
+                <li>[6] Andrey Rublev (RUS) vs. Tommy Paul (USA)</li>
+            </ul>
+        </div>
+        
+        <div id="womens-singles" class="draw-content" style="display:none;">
+            <h3>Women's Singles Draw</h3>
+            <p>Top Half:</p>
+            <ul>
+                <li>[1] Iga Świątek (POL) vs. [WC] Matilde Paoletti (ITA)</li>
+                <li>[6] Ons Jabeur (TUN) vs. [Q] Clara Tauson (DEN)</li>
+                <li>[3] Coco Gauff (USA) vs. Emma Raducanu (GBR)</li>
+                <li>[8] Zheng Qinwen (CHN) vs. Anastasia Pavlyuchenkova (RUS)</li>
+            </ul>
+            <p>Bottom Half:</p>
+            <ul>
+                <li>[4] Elena Rybakina (KAZ) vs. Victoria Azarenka (BLR)</li>
+                <li>[7] Markéta Vondroušová (CZE) vs. Karolína Muchová (CZE)</li>
+                <li>[2] Aryna Sabalenka (BLR) vs. Jelena Ostapenko (LAT)</li>
+                <li>[5] Jessica Pegula (USA) vs. Beatriz Haddad Maia (BRA)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 Rome Open - Internazionali BNL d'Italia</p>
+        <p>Official website of the ATP/WTA Rome Masters tennis tournament</p>
+    </footer>
+    
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all tabs
+            const tabs = document.getElementsByClassName('tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            // Show the selected tab content and mark tab as active
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Date navigation for schedule
+        const scheduleDates = [
+            "May 10, 2025 (Day 1)",
+            "May 11, 2025 (Day 2)",
+            "May 12, 2025 (Day 3)",
+            "May 13, 2025 (Day 4)",
+            "May 14, 2025 (Day 5)",
+            "May 15, 2025 (Quarterfinals)",
+            "May 16, 2025 (Semifinals)",
+            "May 17, 2025 (Women's Final)",
+            "May 18, 2025 (Men's Final)"
+        ];
+        
+        let currentScheduleDateIndex = 2;
+        
+        function changeDate(offset) {
+            currentScheduleDateIndex += offset;
+            
+            // Keep index within bounds
+            if (currentScheduleDateIndex < 0) {
+                currentScheduleDateIndex = 0;
+            } else if (currentScheduleDateIndex >= scheduleDates.length) {
+                currentScheduleDateIndex = scheduleDates.length - 1;
+            }
+            
+            document.getElementById('current-date').textContent = scheduleDates[currentScheduleDateIndex];
+        }
+        
+        // Date navigation for results
+        let currentResultsDateIndex = 1;
+        
+        function changeResultsDate(offset) {
+            currentResultsDateIndex += offset;
+            
+            // Keep index within bounds
+            if (currentResultsDateIndex < 0) {
+                currentResultsDateIndex = 0;
+            } else if (currentResultsDateIndex >= scheduleDates.length) {
+                currentResultsDateIndex = scheduleDates.length - 1;
+            }
+            
+            document.getElementById('results-date').textContent = scheduleDates[currentResultsDateIndex];
+        }
+        
+        // Draw navigation
+        function showDraw(drawId) {
+            // Hide all draw contents
+            const drawContents = document.getElementsByClassName('draw-content');
+            for (let i = 0; i < drawContents.length; i++) {
+                drawContents[i].style.display = 'none';
+            }
+            
+            // Show the selected draw
+            document.getElementById(drawId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
